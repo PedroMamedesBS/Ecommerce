@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Header Modelo</title>
+  <title>Ecommerce</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+
 </head>
 <body>
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="caminho-para-sua-imagem.png" alt="Logo" />
+        <img src="./assets/logo_simp.png" alt="Logo" />
       </div>
       <ul class="menu">
         <li><a href="#">Página Inicial</a></li>
@@ -19,10 +21,40 @@
       </ul>
       <div class="cart">
         <a href="#">
-          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Carrinho" />
+          <img src="./assets/carrinho.png" alt="Carrinho" />
         </a>
       </div>
     </nav>
   </header>
+
+  <div class="carrossel-container">
+    <button class="prev" onclick="mudarImagem(-1)">&#10094;</button>
+    <div class="carrossel">
+      <img src="./assets/carrossel1.png" alt="Imagem 1" class="ativo">
+      <img src="./assets/carrossel2.png" alt="Imagem 2">
+      <img src="./assets/carrossel3.png" alt="Imagem 3">
+      <img src="./assets/carrossel4.jpg" alt="Imagem 4">
+      <img src="./assets/carrossel5.jpg" alt="Imagem 5">
+      <img src="./assets/carrossel6.png" alt="Imagem 6">
+      <img src="./assets/carrossel7.jpg" alt="Imagem 7">
+      <img src="./assets/carrossel8.png" alt="Imagem 8">
+    </div>
+    <button class="next" onclick="mudarImagem(1)">&#10095;</button>
+  </div>
+
+  <main>
+    <div class="produto">
+      <div class="imagem-produto">
+        <img src="./assets/produto1.png " alt="invictus">
+        <p>Invictus Paco Rabanne -100ml</p>
+          <p><strong>R$ 553,90</strong></p>
+          <button id="b1" class="adicionar" data-nome="invictus" data-preco="553.90">Adicionar</button>
+      </div>
+    </div>
+
+
+
+  </main>
+
 </body>
 </html>
