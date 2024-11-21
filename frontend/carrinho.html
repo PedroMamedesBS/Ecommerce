@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styleCarrinho.css">
+    <script src="resumoCompras.js" defer></script>
+    <title>Carrinho</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="./assets/logo_simp.png" alt="Logo" />
+            </div>
+            <ul class="menu">
+                <li><a href="./index.html">Página Inicial</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="./cadastrar.html">Cadastrar</a></li>
+            </ul>
+            <div class="cart">
+                <a href="./carrinho.html">
+                    <img src="./assets/carrinho.png" alt="Carrinho" />
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="carrinho-container">
+        <h1>Seu Carrinho</h1>
+        <div id="carrinho-itens" class="carrinho-itens">
+            <!-- Os itens do carrinho aparecerão aqui -->
+        </div>
+        <div class="carrinho-total-container">
+            <h2>Total: <span id="carrinho-total"></span></h2>
+        </div>
+        <br><br>
+
+        <button id="comprar">Comprar</button>
+    </main>
+      
+
+</body>
+
+</html>
