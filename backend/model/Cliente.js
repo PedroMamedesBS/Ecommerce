@@ -36,8 +36,7 @@ const Cliente = db.define('cliente', {
         allowNull: false
     },
     complemento:{
-        type: DataTypes.STRING(40),
-        allowNull: false
+        type: DataTypes.STRING(40)
     },
     bairro:{
         type: DataTypes.STRING(40),
