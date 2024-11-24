@@ -1,22 +1,20 @@
 // Seleção dos elementos
 const btnLogin = document.getElementById('btnLogin');
-const loginRes = document.getElementById('loginRes');
+const res = document.getElementById('res');
 
 // Evento de clique para login
 btnLogin.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const emailCliente = document.getElementById('emailCliente').value;
-  const senhaCliente = document.getElementById('senhaCliente').value;
+  const emailCliente = document.getElementById('emailCliente').value
 
   // Envia os dados para o servidor
   const loginData = {
-    emailCliente: emailCliente,
-    senhaCliente: senhaCliente
+    emailCliente: emailCliente
   };
 
   fetch('http://localhost:3000/login', {
-    method: "POST",
+    method: "GET",
     headers: {
       'Content-Type': 'application/json'
     },
@@ -29,11 +27,11 @@ btnLogin.addEventListener('click', (e) => {
       // Redireciona para a página inicial ou dashboard
       window.location.href = "./index.html";
     } else {
-      loginRes.innerHTML = `<p style="color: red;">${data.message}</p>`;
+      res.innerHTML = `<p style="color: red;">${data.message}</p>`;
     }
   })
   .catch((err) => {
     console.error("Erro ao realizar login!", err);
-    loginRes.innerHTML = `<p style="color: red;">Erro ao realizar login. Tente novamente mais tarde.</p>`;
+    res.innerHTML = `<p style="color: red;">Erro ao realizar login. Tente novamente mais tarde.</p>`;
   });
 });

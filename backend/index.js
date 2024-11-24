@@ -13,6 +13,7 @@ app.use(cors())
 /* ------------------------------- */
 
 app.post('/cliente', controllerCliente.cadastrarCliente)
+app.get('/login', controllerCliente.loginCliente)
 
 app.get('/', (req,res)=>{
     res.status(200).json({message: "Servidor rodando!"})
