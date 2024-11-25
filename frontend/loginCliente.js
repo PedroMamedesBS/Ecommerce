@@ -1,37 +1,32 @@
-// Seleção dos elementos
-const btnLogin = document.getElementById('btnLogin');
-const res = document.getElementById('res');
+btnLogin.addEventListener('click', async (event) => {
+  event.preventDefault();
 
-// Evento de clique para login
-btnLogin.addEventListener('click', (e) => {
-  e.preventDefault();
+  const emailCliente = document.getElementById('emailCliente').value;
 
-  const emailCliente = document.getElementById('emailCliente').value
+  if (!emailCliente) {
+    res.textContent = 'Por favor, insira seu e-mail.';
+    return;
+  }
 
-  // Envia os dados para o servidor
-  const loginData = {
-    emailCliente: emailCliente
-  };
+  try {
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'POST', // Certifique-se de que o backend aceita POST
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ emailCliente }),
+    });
 
-  fetch('http://localhost:3000/login', {
-    method: "GET",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(loginData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      alert("Login realizado com sucesso!");
-      // Redireciona para a página inicial ou dashboard
-      window.location.href = "./index.html";
+    const data = await response.json();
+
+    if (response.status === 200) {
+      alert(data.message);
+      window.location.href = './index.html'; // Redireciona após sucesso
     } else {
-      res.innerHTML = `<p style="color: red;">${data.message}</p>`;
+      res.textContent = data.message; // Exibe a mensagem de erro
     }
-  })
-  .catch((err) => {
-    console.error("Erro ao realizar login!", err);
-    res.innerHTML = `<p style="color: red;">Erro ao realizar login. Tente novamente mais tarde.</p>`;
-  });
+  } catch (error) {
+    console.error('Erro ao realizar login:', error);
+    res.textContent = 'Erro ao realizar login. Tente novamente mais tarde.';
+  }
 });

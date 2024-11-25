@@ -63,6 +63,10 @@ body {
     margin-left: 30px;
     text-align: center;
   }
+  .fabricante{
+    margin-left: 30px;
+    text-align: center;
+  }
 
 
   /* Estilo geral */
@@ -133,6 +137,26 @@ button#cad_cli {
 }
 
 button#cad_cli:hover {
+  background-color: #0056b3;
+}
+
+button#cad_fab {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#cad_fab:hover {
   background-color: #0056b3;
 }
 

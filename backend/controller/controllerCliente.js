@@ -12,25 +12,28 @@ const cadastrarCliente = async (req,res)=>{
     }
 }
 
-const loginCliente = async (req,res)=>{
-    const dados = req.body
-    console.log(dados)
-    try{
-        const pesq = await Cliente.findOne({where:{emailCliente: dados.emailCliente}, raw:true})
-        if(pesq === null){
-            console.log("Cliente não encontrado no banco de dados") 
-            res.status(404).json({message: "Cliente não encontrado no banco de dados"})
-        }else if(pesq.emailCliente == dados.emailCliente){
-            console.log("Login realizado com sucesso!")
-            res.status(200).json({message:"Login realizado com sucesso!"})
-        }else{
-            console.log("Cliente não cadastrado!")
-            res.status(500).json({message:"Cliente não cadastrado"})
+const loginCliente = async (req, res) => {
+    const dados = req.body;
+    console.log("Dados recebidos:", dados);
+
+    try {
+        const cliente = await Cliente.findOne({
+            where: { emailCliente: dados.emailCliente },
+            raw: true,
+        });
+
+        if (!cliente) {
+            console.log("Cliente não encontrado no banco de dados.");
+            return res.status(404).json({ message: "Cliente não encontrado no banco de dados." });
         }
-    }catch(err){
-        console.error('Erro a consultar o Usuário!',err)
-        res.status(500).json({message: 'Erro a consultar o Usuário!'})
+
+        console.log("Login realizado com sucesso!");
+        res.status(200).json({ message: "Login realizado com sucesso!" });
+    } catch (err) {
+        console.error("Erro durante a consulta ao banco de dados:", err.message);
+        res.status(500).json({ message: "Erro interno no servidor." });
     }
-}
+};
+
 
 module.exports = { cadastrarCliente, loginCliente}
